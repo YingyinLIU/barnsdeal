@@ -3,7 +3,7 @@
 function sendData1(){			
 			
 	try{
-		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
 	}
 		
 	catch (Exception $e){			
@@ -47,7 +47,7 @@ function sendData1(){
 function sendData2(){
 	
 	try{
-		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
 	}
 		
 	catch (Exception $e){			
@@ -94,7 +94,7 @@ function sendData2(){
 function sendData3(){
 	
 	try{
-		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
 	}
 		
 	catch (Exception $e){			
@@ -196,7 +196,7 @@ function sendData3(){
 function sendData4(){
 	
 	try{
-		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
 	}
 		
 	catch (Exception $e){			
@@ -306,7 +306,7 @@ function sendData4(){
 function sendData5(){
 	
 	try{
-		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
 	}
 		
 	catch (Exception $e){			
@@ -364,7 +364,7 @@ function sendData5(){
 function sendData6(){
 	
 	try{
-		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
 	}
 		
 	catch (Exception $e){			
@@ -414,7 +414,7 @@ function sendData6(){
 function sendData7(){
 	
 	try{
-		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
 	}
 		
 	catch (Exception $e){			
