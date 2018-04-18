@@ -7,13 +7,13 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url('form')?>">Barnsdeal</a>
+            <a class="navbar-brand" href="<?php echo site_url('Form')?>">Barnsdeal</a>
         </div>
       <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
   			<ul class="nav navbar-nav">
   				<li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
-          <li><a href="<?php echo site_url('login/deconnexion')?>">Déconnexion</a></li>
+          <li><a href="<?php echo site_url('Login/deconnexion')?>">Déconnexion</a></li>
         </ul>
       </div>
     </div>

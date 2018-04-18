@@ -5,7 +5,7 @@ class Login extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('form');
+		$this->load->helper('Form');
 		$this->load->library('form_validation');
 		$this->load->model('forms');
 		$this->load->model('users');
@@ -13,7 +13,7 @@ class Login extends CI_Controller
 	
 	public function index()
 	{
-		$this->load->view('login');
+		$this->load->view('Login');
 	}
 		
 	public function connexion()
@@ -40,16 +40,16 @@ class Login extends CI_Controller
 			$this->session->set_userdata($data);
 									
 			// On charge la page d'accueil correspondant aux autorisations			
-			redirect('form');
+			redirect('Form');
 		}
 		
-		else{ redirect('login'); }
+		else{ redirect('Login'); }
 	}
 	
 	public function deconnexion()
 	{
 		session_destroy();
-		redirect('login');
+		redirect('Login');
 	}
 }
 

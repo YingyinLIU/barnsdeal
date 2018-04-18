@@ -25,7 +25,7 @@
 		echo '<div id='.$question['position'].'>';
 		
 		// BALISE D'OUVERTURE DU QUESTIONNAIRE	
-		echo '<form action="'.base_url().'form/repondre_question" method="post">';
+		echo '<form action="'.base_url().'Form/repondre_question" method="post">';
 			
 		// AFFICHAGE DES CHAMPS TEXTES
 		if($question['type'] == "champ_texte")

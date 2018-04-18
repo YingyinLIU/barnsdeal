@@ -17,7 +17,7 @@
 <h3>Ajout d'un questionnaire</h3>
 
 <?php
-	echo form_open('form/ajouter');
+	echo form_open('Form/ajouter');
 	
 	$data = array(
 	'name' => 'new_form',
@@ -38,16 +38,16 @@ foreach ($forms as $form)
 	echo $form['table_name'] = str_replace("q_", "", $form['table_name']); 
 	
 	// Bouton pour afficher les réponses
-	echo form_open('form/reponses');
+	echo form_open('Form/reponses');
 	$data = array(
-		'form' => $form['table_name']
+		'Form' => $form['table_name']
 	);
 	echo form_hidden($data);
 	echo form_submit('submit', 'Réponses');
 	echo form_close();
 	
 	// Bouton pour modifier le questionnaire
-	echo form_open('form/modifier');
+	echo form_open('Form/modifier');
 	$data = array(
 		'modify_form' => $form['table_name']
 	);
@@ -56,7 +56,7 @@ foreach ($forms as $form)
 	echo form_close();
 	
 	// Bouton pour supprimer le questionnaire
-	echo form_open('form/supprimer');
+	echo form_open('Form/supprimer');
 	$data = array(
 		'delete_form' => $form['table_name']
 	);

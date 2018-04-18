@@ -6,7 +6,7 @@ class Form extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('form');
+		$this->load->helper('Form');
 		$this->load->model('forms');
 	}
 	
@@ -31,7 +31,7 @@ class Form extends CI_Controller
 			
 	public function reponses()
 	{
-		$form = $this->input->post('form');
+		$form = $this->input->post('Form');
 		$answers = $this->forms->get_answers($form);
 		
 		var_dump($answers);
@@ -47,14 +47,14 @@ class Form extends CI_Controller
 	{		
 		$form_name = $this->input->post('new_form');		
 		$this->forms->add_form($form_name);		
-		redirect('form');
+		redirect('Form');
 	}
 	
 	public function supprimer()
 	{		
 		$form_name = $this->input->post('delete_form');		
 		$this->forms->delete_form($form_name);		
-		redirect('form');
+		redirect('Form');
 	}
 	
 	public function modifier($form_name = NULL) // Paramètre optionnel
@@ -62,7 +62,7 @@ class Form extends CI_Controller
 		if($form_name == NULL) { $form_name = $this->input->post('modify_form'); }
 		$form = $this->forms->get_form($form_name);				
 		$data = array('form_name' => $form_name, 'form' => $form);
-		$data['nav_bar'] = $this->load->view('nav_bar');		
+		//$data['nav_bar'] = $this->load->view('nav_bar');		
 		$this->load->view('edit_form', $data);
 	}
 	
@@ -72,7 +72,7 @@ class Form extends CI_Controller
 		$form_name = $data_question['form_name'];
 		$this->forms->add_question($data_question);		
 		$this->modifier($form_name);
-		redirect('form/modifier/'.$form_name);
+		redirect('Form/modifier/'.$form_name);
 	}
 	
 	public function supprimer_question()
@@ -80,7 +80,7 @@ class Form extends CI_Controller
 		$id_delete = $this->input->post('id_delete');
 		$form_name = $this->input->post('form_name');		
 		$this->forms->delete_question($form_name, $id_delete);	
-		redirect('form/modifier/'.$form_name);		
+		redirect('Form/modifier/'.$form_name);		
 	}
 	
 	public function deplacer_question()
@@ -88,7 +88,7 @@ class Form extends CI_Controller
 		$move_data = $this->input->post();
 		$form_name = $this->input->post('form_name');
 		$this->forms->move_question($move_data);
-		redirect('form/modifier/'.$form_name);
+		redirect('Form/modifier/'.$form_name);
 	}
 	
 	public function repondre()
@@ -96,7 +96,7 @@ class Form extends CI_Controller
 		$form_name = $this->input->post('form');	
 		$form = $this->forms->get_form($form_name);		
 		$data = array('form_name' => $form_name, 'form' => $form);
-		$data['nav_bar'] = $this->load->view('nav_bar');	
+		//$data['nav_bar'] = $this->load->view('nav_bar');	
 		$this->load->view('answer_form', $data);		
 	}
 	

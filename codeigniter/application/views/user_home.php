@@ -21,7 +21,7 @@ foreach ($forms as $form)
 	echo $form['table_name'] = str_replace("q_", "", $form['table_name']); 
 	
 	// Bouton pour répondre au questionnaire
-	echo form_open('form/repondre');
+	echo form_open('Form/repondre');
 	$data = array(
 		'form' => $form['table_name']
 	);

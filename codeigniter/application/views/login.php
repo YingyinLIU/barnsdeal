@@ -1,6 +1,6 @@
 <?php 
 
-echo form_open('login/connexion');
+echo form_open('Login/connexion');
 
 $data = array('name' => 'id', 'placeholder' => 'Identifiant');
 echo form_input($data);

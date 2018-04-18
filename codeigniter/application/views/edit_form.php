@@ -81,7 +81,7 @@
 		echo $question['position']." - ".$question['intitule']; ?></br><?php
 		
 		// Bouton pour supprimer la question
-		echo form_open('form/supprimer_question');
+		echo form_open('Form/supprimer_question');
 			$data = array(
 			'id_delete' => $question['id'],
 			'form_name' => $form_name
@@ -91,7 +91,7 @@
 		echo form_close();
 		
 		// Champ texte pour déplacer la question
-		echo form_open('form/deplacer_question');
+		echo form_open('Form/deplacer_question');
 		$data = array('name' => 'new_position', 'placeholder' => 'Position');
 		echo form_input($data);	
 		$data = array('id_move' => $question['id'], 'form_name' => $form_name, 'old_position' => $question['position']);

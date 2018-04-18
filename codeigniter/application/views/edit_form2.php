@@ -17,7 +17,7 @@
 
 	<?php 
 
-	echo form_open('login/connexion');
+	echo form_open('Login/connexion');
 
 
 	$data = array('name' => 'intitule', 'placeholder' => 'Intitulé de votre question');
