@@ -16,7 +16,7 @@ class Form extends CI_Controller
 		{ 
 			$forms = $this->forms->get_forms_list();
 			$data = array('forms' => $forms);
-			$data['nav_bar'] = $this->load->view('nav_bar');
+			//$data['nav_bar'] = $this->load->view('nav_bar');
 			$this->load->view('admin_home', $data); 
 		}
 		
@@ -24,7 +24,7 @@ class Form extends CI_Controller
 		{ 
 			$forms = $this->forms->get_forms_list();
 			$data = array('forms' => $forms);
-			$data['nav_bar'] = $this->load->view('nav_bar');
+			//$data['nav_bar'] = $this->load->view('nav_bar');
 			$this->load->view('user_home', $data);
 		}
 	}

@@ -14,7 +14,7 @@
 
 <body>
 
-<?php $nav_bar ?>
+<?php $this->load->view('nav_bar'); ?>
 
 <h3>Ajout d'une question</h3>
 

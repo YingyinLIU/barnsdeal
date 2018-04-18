@@ -12,7 +12,7 @@
 
 <body>
 
-	<?php $nav_bar ?>
+	<?php $this->load->view('nav_bar'); ?>
 	
 	<h2>LISTE DES QUESTIONS</h2>
 

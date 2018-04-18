@@ -12,9 +12,9 @@
 
 <body>
 
-<?php $nav_bar ?>
+<?php $this->load->view('nav_bar'); ?>
 
-	<h3>Ajout d'un questionnaire</h3>
+<h3>Ajout d'un questionnaire</h3>
 
 <?php
 	echo form_open('form/ajouter');
