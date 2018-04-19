@@ -47,14 +47,14 @@ class Form extends CI_Controller
 	{		
 		$form_name = $this->input->post('new_form');		
 		$this->Forms->add_form($form_name);		
-		redirect('Form');
+		redirect('form');
 	}
 	
 	public function supprimer()
 	{		
 		$form_name = $this->input->post('delete_form');		
 		$this->Forms->delete_form($form_name);		
-		redirect('Form');
+		redirect('form');
 	}
 	
 	public function modifier($form_name = NULL) // Paramètre optionnel

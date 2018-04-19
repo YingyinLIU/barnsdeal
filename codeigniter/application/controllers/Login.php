@@ -13,7 +13,7 @@ class Login extends CI_Controller
 	
 	public function index()
 	{
-		$this->load->view('Login');
+		$this->load->view('login');
 	}
 		
 	public function connexion()
@@ -40,16 +40,16 @@ class Login extends CI_Controller
 			$this->session->set_userdata($data);
 									
 			// On charge la page d'accueil correspondant aux autorisations			
-			redirect('Form');
+			redirect('form');
 		}
 		
-		else{ redirect('Login'); }
+		else{ redirect('login'); }
 	}
 	
 	public function deconnexion()
 	{
 		session_destroy();
-		redirect('Login');
+		redirect('login');
 	}
 }
 
