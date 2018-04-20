@@ -11,9 +11,7 @@
 </head>
 
 <body class="form">
-
-	<?php $nav_bar ?>
-	
+	<?php $this->load->view('nav_bar'); ?>	
 	<?php 
 
 	function displayQuestion($question, $form_name){
@@ -150,9 +148,9 @@
 		<?php echo '<form action="'.base_url().'form/repondre_question" method="post">'; ?>
 			         
           <div class="carousel-item active" style="background-color: #343a40" id="carousel_0">
-            <div class="text_form">
+            <div class="answer_desr">
               <h3><?php echo $form_name; ?></h3>
-              <p>Ceci est une page d'introduction permettant d'expliquer l'intérêt de ce questionnaire [...]</p>
+              <p>Ceci est une page d'introduction <br/> permettant d'expliquer l'intérêt de ce questionnaire</p>
             </div>
           </div>
 		  
@@ -163,7 +161,7 @@
 		  } ?>
 		  		  
 		 <div class="carousel-item" style="background-color: #343a40" id="carousel_<?php echo $nb_slides; ?>">
-            <div class="text_form"> <h3>Last slide</h3> <p>Thank you for answering this form.</p> 
+            <div class="answer_desr"> <h3>Last slide</h3> <p>Thank you for answering this form.</p> 
 			<?php echo '<input type="hidden" name="form_name" value="'.$form_name.'">
 			<input type="submit" value="Envoyer"/></form>'; ?> 
 			
