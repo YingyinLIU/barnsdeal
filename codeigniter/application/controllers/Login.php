@@ -40,7 +40,7 @@ class Login extends CI_Controller
 			$this->session->set_userdata($data);
 									
 			// On charge la page d'accueil correspondant aux autorisations			
-			redirect('form');
+			redirect('Form');
 		}
 		
 		else{ redirect('login'); }

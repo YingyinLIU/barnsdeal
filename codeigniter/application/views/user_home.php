@@ -14,6 +14,8 @@
 
 <h3>Liste de vos questionnaires</h3>
 
+<?php $this->load->view('nav_bar'); ?>
+
 <?php 
 
 foreach ($forms as $form)
