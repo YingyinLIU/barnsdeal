@@ -1,20 +1,28 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?php echo site_url('Form')?>">Barnsdeal</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="<?php echo site_url('form'); ?>">Barnsdeal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url('login/deconnexion'); ?>">Déconnexion</a>
+            </li>
+          </ul>
         </div>
-      <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
-  			<ul class="nav navbar-nav">
-  				<li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="<?php echo site_url('Login/deconnexion')?>">Déconnexion</a></li>
-        </ul>
       </div>
-    </div>
-</nav>
+    </nav>
+
+

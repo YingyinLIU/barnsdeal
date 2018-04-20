@@ -39,22 +39,23 @@ class Form extends CI_Controller
 		$data = array();
 		$data['form'] = $form;
 		$data['answers'] = $answers;
-		
-		//$this->load->view('answer', $data);
+
+		//$data['nav_bar'] = $this->load->view('nav_bar');
+		$this->load->view('answers', $data);
 	}
 	
 	public function ajouter()
 	{		
 		$form_name = $this->input->post('new_form');		
 		$this->Forms->add_form($form_name);		
-		redirect('form');
+		redirect('Form');
 	}
 	
 	public function supprimer()
 	{		
 		$form_name = $this->input->post('delete_form');		
 		$this->Forms->delete_form($form_name);		
-		redirect('form');
+		redirect('Form');
 	}
 	
 	public function modifier($form_name = NULL) // Paramètre optionnel
@@ -91,11 +92,12 @@ class Form extends CI_Controller
 		redirect('Form/modifier/'.$form_name);
 	}
 	
-	public function repondre()
+	public function repondre($form_name)
 	{	
-		$form_name = $this->input->post('form');	
-		$form = $this->Forms->get_form($form_name);		
-		$data = array('form_name' => $form_name, 'form' => $form);
+		$form = $this->Forms->get_form($form_name);
+		$answer_position = $this->session->flashdata('answer_position');
+		if($answer_position == ''){ $answer_position = 1; }
+		$data = array('form_name' => $form_name, 'form' => $form, 'answer_position' => $answer_position);
 		//$data['nav_bar'] = $this->load->view('nav_bar');	
 		$this->load->view('answer_form', $data);		
 	}
@@ -103,7 +105,24 @@ class Form extends CI_Controller
 	public function repondre_question()
 	{	
 		$answer_data = $this->input->post();
-		$this->Forms->answer_question($answer_data);
+		$form_name = $answer_data['form_name'];
+		
+		var_dump($answer_data);
+		
+		$data = $this->Forms->alter_data($answer_data);
+		
+		$ids = array_keys($data);
+		for ($i = 0; $i < count($ids); $i++)
+		{
+			$id = $ids[$i];
+			$answer = $data[$id];
+			$answer['form_name'] = $form_name;
+			$answer['id_question'] = $id;
+			$this->Forms->answer_question($answer);		
+		}
+		
+		redirect('Form');
+
 	}	
 }
 

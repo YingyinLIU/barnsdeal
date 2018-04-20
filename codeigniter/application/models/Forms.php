@@ -349,5 +349,57 @@ class Forms extends CI_Model
 		}
 	}
 
+	public function alter_data($answer_data)
+	{
+		$fields = array_keys($answer_data);
+		$types_list = array();
+		
+		for ($i = 0; $i < count($fields); $i++)
+		{
+			$result = preg_match("#^type_question_(.*)$#i", $fields[$i]);
+			if($result == True)
+			{
+				array_push($types_list, $fields[$i]);
+			}		
+		}
+		
+		foreach($types_list as $type)
+		{
+			$tmp = explode('_', $type);
+			$id_question = $tmp[2];
+			$data[$id_question]['type_question'] = $answer_data[$type];
+		}
+		
+		$fields2 = array_keys($data);
+		
+		foreach($fields2 as $id)
+		{
+			if($data[$id]['type_question'] == 'choix_multiple')
+			{
+				for ($i = 0; $i < count($fields); $i++)
+				{
+					$result = preg_match("#^".$id."_(.*)$#i", $fields[$i]);
+					if($result == True)
+					{
+						$tmp = $fields[$i];
+						$data[$id][$tmp] = 1;
+					}
+				}
+			}
+			
+			else if($data[$id]['type_question'] == 'choix_simple')
+			{
+				$tmp = $answer_data[$id.'_'];
+				$data[$id][$id.'_'.$tmp] = 1;
+			}
+			
+			else if(($data[$id]['type_question'] == 'champ_texte') || ($data[$id]['type_question'] == 'champ_numerique') || ($data[$id]['type_question'] == 'echelle'))
+			{
+				$data[$id][$id.'_'] = $answer_data[$id.'_'];
+			}
+		}
+			
+		return $data;
+	}
 }
 	

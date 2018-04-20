@@ -12,26 +12,20 @@
 
 <body>
 
-<h3>Liste de vos questionnaires</h3>
-
-<?php 
-
-foreach ($forms as $form)
-{
-	echo $form_name = str_replace("q_", "", $form['table_name']);  
-	
-	// Bouton pour répondre au questionnaire
-	echo form_open('Form/repondre/'.$form_name);	
-	$data = array(
-		'form' => $form_name
-	);
-	echo form_hidden($data);
-	echo form_submit('submit', 'Répondre');
-	echo form_close();
-	
-}
-	?>
-	
+<?php $this->load->view('nav_bar'); ?>
 
 
+<?php
+
+/*$data_gender = array(
+'Male' => 'Male',
+'Female' => 'Female'
+);
+
+echo form_dropdown('select', $data_gender, 'Male');		*/
+
+?>
+
+</body>
+</html>
 
