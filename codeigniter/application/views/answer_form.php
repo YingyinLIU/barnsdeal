@@ -150,7 +150,7 @@
           <div class="carousel-item active" style="background-color: #343a40" id="carousel_0">
             <div class="answer_desr">
               <h3><?php echo $form_name; ?></h3>
-              <p>Ceci est une page d'introduction <br/> permettant d'expliquer l'intérêt de ce questionnaire</p>
+              <p>Ceci est une page d'introduction permettant d'expliquer l'intérêt de ce questionnaire [...]</p>
             </div>
           </div>
 		  
