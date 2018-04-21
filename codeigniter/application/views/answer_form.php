@@ -8,6 +8,11 @@
     <title>Barnsdeal</title>
     <link href="<?php echo site_url('assets/css/bootstrap.css'); ?>" rel="oldest stylesheet">
 	<link href="<?php echo site_url('assets/css/full-slider.css'); ?>" rel="oldest stylesheet">
+	<script type="text/javascript">
+		window.onload = () => {
+			$("#tag-prev").hide();
+		}
+	</script>
 </head>
 
 <body class="form">
@@ -169,11 +174,11 @@
           </div>
 		  
         </div>
-       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+       <a id="tag-prev" class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a id="tag-next" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
@@ -183,7 +188,39 @@
 		
 <script src="<?php echo site_url('assets/javascript/jquery.min.js')?>"></script>
 <script src="<?php echo site_url('assets/javascript/bootstrap.bundle.js')?>"></script>
+<script type="text/javascript">
+	
 
+	$(".carousel-control-next").click(function(){
+		if($("#carousel_0").attr("class") == "carousel-item active")
+			$("#tag-prev").show();
+		if($("#carousel_".concat(($(".carousel-item").length-2).toString())).attr("class") == "carousel-item active")
+			$("#tag-next").hide();
+	});
+
+	$(".carousel-control-prev").click(function(){
+		if($("#carousel_1").attr("class") == "carousel-item active")
+			$("#tag-prev").hide();
+		if($("#carousel_".concat(($(".carousel-item").length-1).toString())).attr("class") == "carousel-item active")
+			$("#tag-next").show();
+	});
+
+	$(".carousel-indicators>li").click(function(){
+		if($(this).attr("id") == "indicator_0"){
+			$("#tag-prev").hide();
+			$("#tag-next").show();
+		}
+		else if($(this).attr("id") == "indicator_".concat(($(".carousel-item").length-1).toString())){
+			$("#tag-prev").show();
+			$("#tag-next").hide();
+		}
+		else{
+			$("#tag-prev").show();
+			$("#tag-next").show();
+		}
+	});
+
+</script>
 </body>
 </html>
 
