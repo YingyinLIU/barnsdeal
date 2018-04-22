@@ -33,7 +33,7 @@ for ($i = 0; $i < count($forms_id); $i++)
 	
 	echo '<div class="col-md-3" style="padding-bottom: 15px; padding-top: 15px;">';
 	
-	if(in_array($form_id, $filled_forms)){ echo '<div class="card my_form" style="background-color: green !important;">'; }
+	if(in_array($form_id, $filled_forms)){ echo '<div class="card my_form" style="background-color: green !important; padding:10px 0;">'; }
 	else { echo '<div class="card my_form" style="background-color: orange !important; padding:10px 0;">'; }
 		
 	echo '<div class="form_name">';
