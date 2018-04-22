@@ -26,7 +26,7 @@ class Form extends CI_Controller
 			$all_forms_name = $this->Forms->get_forms_name($all_forms);
 			$data = array('forms' => $all_forms_name);
 			$data['nav_bar'] = $this->load->view('nav_bar');
-			$this->load->view('Admin_home', $data); 
+			$this->load->view('admin_home', $data); 
 		}
 		
 		else if($_SESSION['user_privilege'] == 'user')
@@ -37,7 +37,7 @@ class Form extends CI_Controller
 			$filled_forms = $this->Forms->get_filled_forms($user_forms);
 			$data = array('forms' => $user_forms_name, 'filled_forms' => $filled_forms);
 			$data['nav_bar'] = $this->load->view('nav_bar');
-			$this->load->view('User_home', $data);
+			$this->load->view('user_home', $data);
 		}
 	}
 			
@@ -58,7 +58,7 @@ class Form extends CI_Controller
 		$data['users'] = $users;	
 		$data['nav_bar'] = $this->load->view('nav_bar');
 									
-		$this->load->view('Answers', $data);
+		$this->load->view('answers', $data);
 	}
 	
 	public function ajouter()
@@ -116,7 +116,7 @@ class Form extends CI_Controller
 		$details = $this->Forms->get_details($form_id);
 		$data = array('form_id' => $form_id, 'form' => $form, 'details' => $details);
 		$data['nav_bar'] = $this->load->view('nav_bar');	
-		$this->load->view('Answer_form', $data);		
+		$this->load->view('answer_form', $data);		
 	}
 	
 	public function repondre_question()
