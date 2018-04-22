@@ -14,11 +14,11 @@
 
 <body>
 
-<?php $this->load->view('nav_bar'); ?>
+<?php $nav_bar ?>
 
 <h3>Ajout d'une question</h3>
 
-<form action="<?php echo base_url()."form/ajouter_question";?>" method="post">
+<form action="<?php echo base_url()."Form/ajouter_question";?>" method="post">
 		
 			<div>
 				<label>Quel est l'intitulé de votre question ?</label></br>	
@@ -48,14 +48,14 @@
 
 			</br>
 			
-			<div id="choix_multiple">
+			<div id="choix_multiple" style="display: none">
 				<div class="input_fields_wrap">
 					<button class="add_field_button">Ajouter des champs</button>
 					<div><input type="text" name="mytext[]"></div>
 				</div>
 			</div>
 			
-			<div id="echelle">
+			<div id="echelle" style="display: none">
 				<label>Signification du minimum</label></br>	
 				<input type="text" name="sens_min"></br></br>
 				<label>Signification du maximum</label></br>	
@@ -64,7 +64,7 @@
 						
 			</br></br>
 						
-			<input type="hidden" name="form_name" value="<?php echo $form_name ?>">
+			<input type="hidden" name="form_id" value="<?php echo $form_id ?>">
 			
 			<input type="submit" value="Valider"/>
 
@@ -84,7 +84,7 @@
 		echo form_open('Form/supprimer_question');
 			$data = array(
 			'id_delete' => $question['id'],
-			'form_name' => $form_name
+			'form_id' => $form_id
 			);
 		echo form_hidden($data);
 		echo form_submit('submit', 'Supprimer');
@@ -94,7 +94,7 @@
 		echo form_open('Form/deplacer_question');
 		$data = array('name' => 'new_position', 'placeholder' => 'Position');
 		echo form_input($data);	
-		$data = array('id_move' => $question['id'], 'form_name' => $form_name, 'old_position' => $question['position']);
+		$data = array('id_move' => $question['id'], 'form_id' => $form_id, 'old_position' => $question['position']);
 		echo form_hidden($data);
 		echo form_submit('submit', 'Déplacer');
 		echo form_close();

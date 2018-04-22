@@ -17,13 +17,60 @@
 
 <?php
 
-/*$data_gender = array(
-'Male' => 'Male',
-'Female' => 'Female'
-);
 
-echo form_dropdown('select', $data_gender, 'Male');		*/
+if((isset($answers)) && (isset($answers[0]))){ $answers = $answers[0]; }
 
+echo form_open('Form/load_data');
+
+$options = array();
+
+foreach($users as $user)
+{
+	$tmp = $user['id'];	
+	array_push($options, $tmp);
+}
+
+//$data = array_flip($data);
+
+echo form_dropdown('select', $options, NULL);
+
+
+$data = array('form_id' => $form_id, 'options' => $options);
+
+echo form_hidden($data);
+
+echo form_submit('submit', 'Confirmer');
+
+echo form_close();
+
+?>
+
+<?php
+
+if(isset($answers)){
+
+	$questions = array_keys($answers);
+			
+	echo '<table align="center" style="width:95%">';	
+		
+	echo '<tr>';	
+	for ($i = 0; $i < count($questions); $i++)
+	{
+		echo '<th>'.$questions[$i].'</th>';
+	}	
+	echo '</tr>';
+		
+	echo '<tr>';
+	for ($i = 0; $i < count($questions); $i++)
+	{
+		$question = $questions[$i];
+		echo '<td>'.$answers[$question].'</td>';
+	}
+	echo '</tr>';
+			
+	echo '</table>';
+
+}
 ?>
 
 </body>

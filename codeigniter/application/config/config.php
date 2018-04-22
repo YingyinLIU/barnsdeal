@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://127.0.0.1/codeIgniter/';
-$config['base_url'] = '';
+$config['base_url'] = 'http://47.254.131.165/';
 /*
 |--------------------------------------------------------------------------
 | Index File

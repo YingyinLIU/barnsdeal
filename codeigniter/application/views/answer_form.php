@@ -19,7 +19,7 @@
 	<?php $this->load->view('nav_bar'); ?>	
 	<?php 
 
-	function displayQuestion($question, $form_name){
+	function displayQuestion($question, $form_id){
 				
 			echo '<div class="question" id="div_'.$question['id'].'">';
 						
@@ -52,14 +52,17 @@
 				echo form_label($question['intitule'], 'div_'.$question['id'], $attributes);
 				
 				$array_choix = ['choix1','choix2','choix3','choix4','choix5','choix6','choix7','choix8','choix9','choix10'];
+				
+				$i = 0;
 				foreach($array_choix as $element)
 				{
 					if ($question[$element] != "") // To-Do : Afficher les résultats sur plusieurs lignes
 					{
-						$data_checkbox = array('name' => $question['id'].'_'.$question[$element], 'value' => 1);
+						$data_checkbox = array('name' => $question['id'].'_'.$i, 'value' => 1);
 						echo form_checkbox($data_checkbox);
 						$attributes = array('class' => 'label_checkbox');
-						echo form_label($question[$element], $question['id'].'_'.$question[$element], $attributes);
+						echo form_label($question[$element], $question['id'].'_'.$i, $attributes);
+						$i = $i+1;
 					}
 				}
 				
@@ -74,14 +77,17 @@
 				echo form_label($question['intitule'], 'div_'.$question['id'], $attributes);
 				
 				$array_choix = ['choix1','choix2','choix3','choix4','choix5','choix6','choix7','choix8','choix9','choix10'];
+				
+				$i = 0;
 				foreach($array_choix as $element)
 				{
 					if ($question[$element] != "")
 					{	
-						$data_radio = array('name' => $question['id'].'_', 'value' => $question[$element], 'id' => $question['id'].'_'.$question[$element]);
+						$data_radio = array('name' => $question['id'].'_', 'value' => $i, 'id' => $question['id'].'_'.$i);
 						echo form_radio($data_radio);
 						$attributes = array('class' => 'label_checkbox');
-						echo form_label($question[$element], $question['id'].'_'.$question[$element], $attributes);
+						echo form_label($question[$element], $question['id'].'_'.$i, $attributes);
+						$i = $i+1;
 					}
 				}
 				
@@ -154,26 +160,29 @@
 			         
           <div class="carousel-item active" style="background-color: #343a40" id="carousel_0">
             <div class="answer_desr">
-              <h3><?php echo $form_name; ?></h3>
-              <p>Ceci est une page d'introduction permettant d'expliquer l'intérêt de ce questionnaire [...]</p>
+              <h3><?php echo $form_id; ?></h3>
+              <p><?php echo $details['details']; ?></p>
             </div>
           </div>
 		  
+		 
+		  
 <?php 	 foreach ($form as $question){ 
 			echo '<div class="carousel-item" style="background-color: #343a40" id="carousel_'.$question['position'].'"><div>';
-			displayQuestion($question, $form_name);													
+			displayQuestion($question, $form_id);						
 			echo '</div></div>'; 
 		  } ?>
 		  		  
 		 <div class="carousel-item" style="background-color: #343a40" id="carousel_<?php echo $nb_slides; ?>">
-            <div class="answer_desr"> <h3>Last slide</h3> <p>Thank you for answering this form.</p> 
-			<?php echo '<input type="hidden" name="form_name" value="'.$form_name.'">
-			<input type="submit" value="Envoyer"/></form>'; ?> 
-			
+            <div class="answer_desr carousel-caption d-none d-md-block"> <h3>Last slide</h3> <p>Thank you for answering this form.</p> 
+			<?php echo '<input type="hidden" name="form_id" value="'.$form_id.'">
+			<input type="submit" value="Confirmer"/></form>'; ?> 
+
 			</div>
           </div>
 		  
         </div>
+
        <a id="tag-prev" class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
@@ -188,6 +197,7 @@
 		
 <script src="<?php echo site_url('assets/javascript/jquery.min.js')?>"></script>
 <script src="<?php echo site_url('assets/javascript/bootstrap.bundle.js')?>"></script>
+
 <script type="text/javascript">
 	
 
