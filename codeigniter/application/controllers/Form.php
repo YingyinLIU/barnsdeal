@@ -25,7 +25,7 @@ class Form extends CI_Controller
 			
 			$all_forms_name = $this->Forms->get_forms_name($all_forms);
 			$data = array('forms' => $all_forms_name);
-			$data['nav_bar'] = $this->load->view('Nav_bar');
+			$data['nav_bar'] = $this->load->view('nav_bar');
 			$this->load->view('Admin_home', $data); 
 		}
 		
@@ -36,7 +36,7 @@ class Form extends CI_Controller
 			$user_forms_name = $this->Forms->get_forms_name($user_forms);
 			$filled_forms = $this->Forms->get_filled_forms($user_forms);
 			$data = array('forms' => $user_forms_name, 'filled_forms' => $filled_forms);
-			$data['nav_bar'] = $this->load->view('Nav_bar');
+			$data['nav_bar'] = $this->load->view('nav_bar');
 			$this->load->view('User_home', $data);
 		}
 	}
@@ -56,7 +56,7 @@ class Form extends CI_Controller
 		$users = $this->Forms->get_users($form_id);	
 		$data['form_id'] = $form_id;
 		$data['users'] = $users;	
-		$data['nav_bar'] = $this->load->view('Nav_bar');
+		$data['nav_bar'] = $this->load->view('nav_bar');
 									
 		$this->load->view('Answers', $data);
 	}
@@ -81,7 +81,7 @@ class Form extends CI_Controller
 		if($form_id == NULL) { $form_id = $this->input->post('modify_form'); }
 		$form = $this->Forms->get_form($form_id);				
 		$data = array('form_id' => $form_id, 'form' => $form);
-		$data['nav_bar'] = $this->load->view('Nav_bar');		
+		$data['nav_bar'] = $this->load->view('nav_bar');		
 		$this->load->view('edit_form', $data);
 	}
 	
@@ -115,7 +115,7 @@ class Form extends CI_Controller
 		$form = $this->Forms->get_form($form_id);
 		$details = $this->Forms->get_details($form_id);
 		$data = array('form_id' => $form_id, 'form' => $form, 'details' => $details);
-		$data['nav_bar'] = $this->load->view('Nav_bar');	
+		$data['nav_bar'] = $this->load->view('nav_bar');	
 		$this->load->view('Answer_form', $data);		
 	}
 	
