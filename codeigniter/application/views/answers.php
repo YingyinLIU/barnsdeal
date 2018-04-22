@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Barnsdeal</title>
     <link href="<?php echo site_url('assets/css/bootstrap.css')?>" rel="stylesheet">
+    <link href="<?php echo site_url('assets/css/admin_home.css')?>" rel="stylesheet">
 	<style> body { padding-top: 70px; } </style>
 </head>
 
 <body>
-
+<div class="container" style="padding-top: 15px;">
 <?php $this->load->view('nav_bar'); ?>
 
 
@@ -72,7 +73,7 @@ if(isset($answers)){
 
 }
 ?>
-
+</div>
 </body>
 </html>
 

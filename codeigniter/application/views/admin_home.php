@@ -7,32 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Barnsdeal</title>
     <link href="<?php echo site_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
-	<style> body { padding-top: 70px; } </style>
+    <link href="<?php echo site_url('assets/css/admin_home.css'); ?>" rel="stylesheet">
+	<style> body { padding-top: 70px; background-color: #f8f9fa; } </style>
 </head>
 
 <body>
+<?php $this->load->view('nav_bar'); ?>
 
-<?php $nav_bar ?>
 
 	<h3>Ajout d'un questionnaire</h3>
 
 <?php
-echo '<div class="container" style="padding-top: 30px">';
+
+	echo '<div class="container" style="padding-top: 15px">';
 
 	echo form_open('Form/ajouter');
 	
 	$data = array('name' => 'new_form', 'placeholder' => 'Nom du questionnaire');
-	echo form_input($data);
+	echo '<div id="form_name">'.form_input($data).'</div>';
 	
 	$data = array('name' => 'details', 'rows' => 10, 'cols' => 50, 'placeholder' => 'Expliquez l\'intérêt de ce questionnaire pour le répondant');
-	echo form_textarea($data);
+	echo '<div id="form_desc">'.form_textarea($data).'</div>';
 	
-	echo form_submit('submit', 'Confirmer');
+	echo '<div id="form_sub">'.form_submit('submit', 'Confirmer').'</div>';
 	echo form_close();
+	echo '</div>';
 ?>
+
 <hr>
 <h3>Liste des questionnaires</h3>
-
+<div class="container" style="padding-top: 15px">
 <?php 
 
 
@@ -49,7 +53,7 @@ for ($i = 0; $i < count($forms_id); $i++)
 	$position = $position + 1;
 	if($position == 7){ $position = 0; }
 	
-	echo '<div class="col-md-2" style="padding-bottom: 15px; padding-top: 15px;">';
+	echo '<div class="col-md-2" style="padding-bottom: 15px; padding-top: 15px; min-width:200px;">';
 	echo '<div class="card my_form" style="background-color: orange !important;">';
 	
 	echo '<div class="form_name">';
@@ -84,7 +88,7 @@ if($position==0){ echo '</div><div class="row">'; }
 
 echo '</div>';
 echo '</div>';
-
+echo '</div>';
 ?>
 	
 </body>

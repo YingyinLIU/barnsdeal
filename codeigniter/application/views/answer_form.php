@@ -11,6 +11,7 @@
 	<script type="text/javascript">
 		window.onload = () => {
 			$("#tag-prev").hide();
+
 		}
 	</script>
 </head>
@@ -21,7 +22,7 @@
 
 	function displayQuestion($question, $form_id){
 				
-			echo '<div class="question" id="div_'.$question['id'].'">';
+			echo '<div class="answer_desr" id="div_'.$question['id'].'">';
 						
 			// AFFICHAGE DES CHAMPS TEXTES
 			if($question['type'] == "champ_texte")
@@ -139,7 +140,7 @@
 	<?php $nb_slides = count($form)+1;  ?>
 	
 	<header>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
         <ol class="carousel-indicators">
 		  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" id="indicator_0"></li>		  
 		 
@@ -168,13 +169,13 @@
 		 
 		  
 <?php 	 foreach ($form as $question){ 
-			echo '<div class="carousel-item" style="background-color: #343a40" id="carousel_'.$question['position'].'"><div>';
+			echo '<div class="carousel-item" style="background-color: #343a40" id="carousel_'.$question['position'].'"><div style="height:100%"">';
 			displayQuestion($question, $form_id);						
 			echo '</div></div>'; 
 		  } ?>
 		  		  
 		 <div class="carousel-item" style="background-color: #343a40" id="carousel_<?php echo $nb_slides; ?>">
-            <div class="answer_desr carousel-caption d-none d-md-block"> <h3>Last slide</h3> <p>Thank you for answering this form.</p> 
+            <div class="answer_desr"> <h3>Last slide</h3> <p>Thank you for answering this form.</p> 
 			<?php echo '<input type="hidden" name="form_id" value="'.$form_id.'">
 			<input type="submit" value="Confirmer"/></form>'; ?> 
 

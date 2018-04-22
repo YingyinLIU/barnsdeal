@@ -9,15 +9,16 @@
     <link href="<?php echo site_url('assets/css/bootstrap.css')?>" rel="stylesheet">		
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="<?php echo site_url('assets/javascript/my_jquery.js')?>"></script>
-	<style> body { padding-top: 70px; } </style>
+	<link href="<?php echo site_url('assets/css/admin_home.css'); ?>" rel="stylesheet">
+	<style> body { padding-top: 70px; background-color: #f8f9fa; } </style>
 </head>
 
 <body>
 
-<?php $nav_bar ?>
+<?php $this->load->view('nav_bar'); ?>
 
 <h3>Ajout d'une question</h3>
-
+<div class="container" style="padding-top: 15px">
 <form action="<?php echo base_url()."Form/ajouter_question";?>" method="post">
 		
 			<div>
@@ -70,15 +71,15 @@
 
 			
 		</form>
-
+</div>
 <hr>
 <h3>Liste des questions</h3>
-
+<div class="container" style="padding-top: 15px">
 <?php 
 	
 	foreach ($form as $question)
 	{
-		echo $question['position']." - ".$question['intitule']; ?></br><?php
+		echo '<div class="question_name"><span style = "padding-left:15px;">'.$question['position']." - ".$question['intitule'].'</span>'; ?></br><?php
 		
 		// Bouton pour supprimer la question
 		echo form_open('Form/supprimer_question');
@@ -87,7 +88,7 @@
 			'form_id' => $form_id
 			);
 		echo form_hidden($data);
-		echo form_submit('submit', 'Supprimer');
+		echo form_submit('submit', 'Supprimer').'</div>';
 		echo form_close();
 		
 		// Champ texte pour déplacer la question
@@ -102,7 +103,7 @@
 	}
 
 ?>
-	
+</div>	
 
     </body>
 </html>

@@ -8,11 +8,11 @@
     <title>Barnsdeal</title>
     <link href="<?php echo site_url('assets/css/bootstrap.css')?>" rel="stylesheet">
 	<script src="<?php echo site_url('assets/javascript/bootstrap.bundle.js')?>"></script>
-	<style> body { padding-top: 70px; } </style>
+	<style> body { padding-top: 70px; background-color: #f8f9fa; } </style>
 </head>
 
 <body>
-
+<?php $this->load->view('nav_bar'); ?>	
 <h3 style="text-align: center">Vos questionnaires</h3>
 
 <?php 
@@ -34,7 +34,7 @@ for ($i = 0; $i < count($forms_id); $i++)
 	echo '<div class="col-md-3" style="padding-bottom: 15px; padding-top: 15px;">';
 	
 	if(in_array($form_id, $filled_forms)){ echo '<div class="card my_form" style="background-color: green !important;">'; }
-	else { echo '<div class="card my_form" style="background-color: orange !important;">'; }
+	else { echo '<div class="card my_form" style="background-color: orange !important; padding:10px 0;">'; }
 		
 	echo '<div class="form_name">';
 	echo $form_name; 
@@ -58,9 +58,12 @@ if($position==0){ echo '</div><div class="row">'; }
 
 echo '</div>';
 echo '</div>';
+echo '</div>';
 
+?>
 
-	?>
+</body>
+</html>
 	
 
 

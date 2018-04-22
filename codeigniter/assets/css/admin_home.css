@@ -1,0 +1,32 @@
+h3,hr{
+	margin-left: 60px;
+	margin-right:60px;
+}
+
+form{
+	padding:5px 20px;
+}
+
+input[type='text']{
+	
+}
+
+textarea{
+	height:150px;
+}
+
+#form_name, #form_desc, #form_sub{
+	margin:5px 0;
+}
+
+.container{
+    width: 100%;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-right: auto;
+    margin-left: 60px;
+}
+
+body{
+	background-color: #f8f9fa;
+}
