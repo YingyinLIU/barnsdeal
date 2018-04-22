@@ -12,8 +12,10 @@
 </head>
 
 <body>
+	
 <?php $this->load->view('nav_bar'); ?>
 
+<div class="main_container">
 
 	<h3>Ajout d'un questionnaire</h3>
 
@@ -90,7 +92,7 @@ echo '</div>';
 echo '</div>';
 echo '</div>';
 ?>
-	
+</div>	
 </body>
 </html>
 

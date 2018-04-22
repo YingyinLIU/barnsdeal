@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+<div class="main_container">
 <?php $this->load->view('nav_bar'); ?>
 
 <h3>Ajout d'une question</h3>
@@ -104,7 +104,7 @@
 
 ?>
 </div>	
-
-    </body>
+</div>
+</body>
 </html>
 
