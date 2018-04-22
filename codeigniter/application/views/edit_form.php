@@ -88,7 +88,7 @@
 			'form_id' => $form_id
 			);
 		echo form_hidden($data);
-		echo form_submit('submit', 'Supprimer').'</div>';
+		echo form_submit('submit', 'Supprimer','class="edit_supp"').'</div>';
 		echo form_close();
 		
 		// Champ texte pour déplacer la question

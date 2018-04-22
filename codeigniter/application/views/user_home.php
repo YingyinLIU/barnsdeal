@@ -13,7 +13,7 @@
 
 <body>
 <?php $this->load->view('nav_bar'); ?>	
-<h3 style="text-align: center">Vos questionnaires</h3>
+<h3 style="text-align: center; color:#343a40; font-size:2rem;">Vos questionnaires</h3>
 
 <?php 
 

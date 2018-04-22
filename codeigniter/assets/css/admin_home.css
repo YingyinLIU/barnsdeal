@@ -3,13 +3,21 @@ h3,hr{
 	margin-right:60px;
 }
 
+h3{
+    color:#343a40;
+}
+
 form{
 	padding:5px 20px;
 }
 
-input[type='text']{
-	
+input[name='reponses'],input[name='modifier'],input[name='supprimer']{
+	background-color: orange;
+    border: 1.5px solid white;
+    color: white;
+    width: 100px;
 }
+
 
 textarea{
 	height:150px;
@@ -29,4 +37,63 @@ textarea{
 
 body{
 	background-color: #f8f9fa;
+}
+
+input[name='submit']{
+    background-color: #343a4059;
+    color: white;
+    padding: 5px 10px;
+    width: 100px; 
+}
+
+input[value='Valider']{
+    background-color: #343a40d1;
+    color: white;
+    padding: 5px 10px;
+    width: 100px; 
+}
+
+.add_field_button{
+    background-color: #343a4059;
+    color: white;
+    padding: 5px 10px;
+    width: 173px;
+    margin-bottom: 7px;
+}
+
+input[name='new_form']{
+    width: 422px;
+}
+
+input[name='new_position']{
+    width:100px;
+}
+
+input[name='mytext[]']{
+    margin-bottom: 5px; 
+    margin-right: 5px;
+}
+
+label{
+    padding-right: 10px;
+}
+
+span{
+    font-size:1.4rem;
+}
+
+.row{
+    margin:0;
+}
+
+.form_name{
+    font-size: 1.3rem;
+}
+
+.my_form{
+    padding: 4px 0;
+}
+
+input[class='edit_supp']{
+    width:203px;
 }
