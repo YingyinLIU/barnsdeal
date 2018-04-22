@@ -1,5 +1,0 @@
--> Lancer l'application sous WAMP Server (127.0.0.1/test)
--> Les données sont envoyées dans la BDD test de PHPMyAdmin (127.0.0.1/phpmyadmin)
--> Importer la base test.sql fournie au préalable
--> A la connexion sur la page d'identification, renseigner une paire de valeurs de la table "Authentification" ({1;password1} par exemple)
--> Le questionnaire est décomposé en plusieurs parties, chacune envoyant ses données dans la BDD directement après validation
