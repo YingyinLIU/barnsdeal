@@ -8,7 +8,7 @@
     <title>Barnsdeal</title>
     <link href="<?php echo site_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
     <link href="<?php echo site_url('assets/css/admin_home.css'); ?>" rel="stylesheet">
-	<style> body { padding-top: 70px; background-color: #f8f9fa; } </style>
+	<style> body { padding-top: 70px; background-color: rgb(246, 246, 246); } </style>
 </head>
 
 <body>
@@ -56,7 +56,7 @@ for ($i = 0; $i < count($forms_id); $i++)
 	if($position == 7){ $position = 0; }
 	
 	echo '<div class="col-md-2" style="padding-bottom: 15px; padding-top: 15px; min-width:200px;">';
-	echo '<div class="card my_form" style="background-color: orange !important;">';
+	echo '<div class="card my_form" >';
 	
 	echo '<div class="form_name">';
 	echo $form_name;

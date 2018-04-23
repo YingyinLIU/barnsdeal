@@ -59,7 +59,7 @@
 				{
 					if ($question[$element] != "") // To-Do : Afficher les résultats sur plusieurs lignes
 					{
-						$data_checkbox = array('name' => $question['id'].'_'.$i, 'value' => 1);
+						$data_checkbox = array('name' => $question['id'].'_'.$i, 'value' => 1, 'id'=>$question['id'].'_'.$i);
 						echo form_checkbox($data_checkbox);
 						$attributes = array('class' => 'label_checkbox');
 						echo form_label($question[$element], $question['id'].'_'.$i, $attributes);

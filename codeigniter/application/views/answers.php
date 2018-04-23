@@ -8,10 +8,11 @@
     <title>Barnsdeal</title>
     <link href="<?php echo site_url('assets/css/bootstrap.css')?>" rel="stylesheet">
     <link href="<?php echo site_url('assets/css/admin_home.css')?>" rel="stylesheet">
-	<style> body { padding-top: 70px; } </style>
+	<style> body { padding-top: 70px; background-color: rgb(246, 246, 246); } </style>
 </head>
 
 <body>
+<div class="main_container">
 <div class="container" style="padding-top: 15px;">
 <?php $this->load->view('nav_bar'); ?>
 
@@ -73,6 +74,7 @@ if(isset($answers)){
 
 }
 ?>
+</div>
 </div>
 </body>
 </html>

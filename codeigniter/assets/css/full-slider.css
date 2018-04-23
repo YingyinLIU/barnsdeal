@@ -23,3 +23,10 @@
   margin-right: 15%;
   text-align: center;
 }
+
+.text_field{
+    border: 0;
+    background-color: rgb(255,255,255,0);
+    border-bottom: 2px solid #ccc;
+    color: white;
+}

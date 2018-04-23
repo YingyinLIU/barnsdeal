@@ -2,7 +2,7 @@
     width: 900px;
     margin: auto;
     padding: 20px 0;
-    background-color: #e9ecef;
+    background-color: white;
     min-height: 786px;
 }
 
@@ -16,11 +16,11 @@ h3{
 }
 
 form{
-	padding:5px 20px;
+	padding:5px 4px;
 }
 
 input[name='reponses'],input[name='modifier'],input[name='supprimer']{
-	background-color: orange;
+	background-color: rgb(255,255,255,0);
     border: 1.5px solid white;
     color: white;
     width: 100px;
@@ -38,7 +38,7 @@ textarea{
 .container{
     width: 100%;
     padding-right: 5px;
-    padding-left: 5px;
+    padding-left: 0px;
     margin-right: auto;
     margin-left: 60px;
 }
@@ -48,7 +48,7 @@ body{
 }
 
 input[name='submit']{
-    background-color: #343a4059;
+    background-color: #d5baac;
     color: white;
     padding: 5px 10px;
     width: 100px; 
@@ -62,7 +62,7 @@ input[value='Valider']{
 }
 
 .add_field_button{
-    background-color: #343a4059;
+    background-color: #d5baac;
     color: white;
     padding: 5px 10px;
     width: 173px;
@@ -87,7 +87,7 @@ label{
 }
 
 span{
-    font-size:1.4rem;
+    font-size:1.3rem;
 }
 
 .row{
@@ -100,8 +100,19 @@ span{
 
 .my_form{
     padding: 4px 0;
+    background-color: #6c6f66;
 }
 
 input[class='edit_supp']{
     width:203px;
+}
+
+input[class='edit_supp']{
+    background-color: rgb(255,255,255,0);
+    color: #d5baac;
+    border: 2px solid #d5baac;
+}
+
+.question_name{
+    padding:3px 0;
 }
