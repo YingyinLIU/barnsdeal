@@ -123,6 +123,8 @@ echo form_close();
 ?>
 </div>	
 </div>
+<script src="<?php echo site_url('assets/javascript/jquery.min.js')?>"></script>
+<script src="<?php echo site_url('assets/javascript/bootstrap.bundle.js')?>"></script>
 </body>
 </html>
 

@@ -100,12 +100,71 @@ class Forms extends CI_Model
 		return $query->result_array();		 	
 	}
 	
-	public function get_user_answer($data)
-	{		
-		$select = $data['select'];
+	public function get_user_answer($form_id, $question_selected, $user, $type)
+	{	
+		if(($type == 'champ_texte') || ($type == 'champ_numerique') || ($type == 'echelle'))
+		{
+			$query = $this->db->query('SELECT '.$question_selected.'_ FROM r_'.$form_id.' WHERE id = '.$user);
+			$answer = $query->result_array();
+			
+			if(isset($answer[0]))
+			{
+				$answer = $answer[0][$question_selected.'_'];
+				
+				if ($type == 'echelle') { return $answer.'/5'; }
+				
+				else { return $answer; }
+			}
+		}
+		
+		else if ($type == 'choix_simple')
+		{		
+			$req = $this->db->query("SELECT column_name FROM information_schema.columns WHERE table_name = 'r_".$form_id."' AND column_name LIKE '".$question_selected."_%'");
+			$req = $req->result_array();
 	
-		$query = $this->db->query('SELECT * FROM r_'.$data['form_id'].' WHERE id = '.$data['options'][$select]);
-		return $query->result_array();		 	
+			for ($i = 0; $i < count($req); $i++)
+			{
+				$query = $this->db->query('SELECT '.$question_selected.'_'.$i.' FROM r_'.$form_id.' WHERE id = '.$user);
+				$answer = $query->result_array();
+				if (isset($answer[0]))
+				{
+					$value = $answer[0][$question_selected.'_'.$i];
+					if ($value == 1)
+					{
+						$choix = $i+1;
+						$query = $this->db->query('SELECT choix'.$choix.' FROM q_'.$form_id.' WHERE id = '.$question_selected);
+						$answer_text = $query->result_array();
+						return $answer_text[0]['choix'.$choix];
+					}
+				}
+			}
+		}
+		
+		else if ($type == 'choix_multiple')
+		{		
+			$req = $this->db->query("SELECT column_name FROM information_schema.columns WHERE table_name = 'r_".$form_id."' AND column_name LIKE '".$question_selected."_%'");
+			$req = $req->result_array();
+			$list_options = '';
+			
+			for ($i = 0; $i < count($req); $i++)
+			{
+				$query = $this->db->query('SELECT '.$question_selected.'_'.$i.' FROM r_'.$form_id.' WHERE id = '.$user);
+				$answer = $query->result_array();
+				if (isset($answer[0]))
+				{
+					$value = $answer[0][$question_selected.'_'.$i];
+					if ($value == 1)
+					{
+						$choix = $i+1;
+						$query = $this->db->query('SELECT choix'.$choix.' FROM q_'.$form_id.' WHERE id = '.$question_selected);
+						$answer_text = $query->result_array();
+						if ($list_options == ''){ $list_options = $list_options.''.$answer_text[0]['choix'.$choix]; }
+						else { $list_options = $list_options.' | '.$answer_text[0]['choix'.$choix]; }
+					}
+				}
+			}
+			return $list_options;
+		}
 	}
 	
 	public function add_form($form_name, $form_details)

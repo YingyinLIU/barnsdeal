@@ -8,7 +8,7 @@
     <title>Barnsdeal</title>
     <link href="<?php echo site_url('assets/css/bootstrap.css')?>" rel="stylesheet">
 	<script src="<?php echo site_url('assets/javascript/bootstrap.bundle.js')?>"></script>
-	<style> body { padding-top: 70px; background-color: rgb(246, 246, 246); } 
+	<style> body { padding-top: 62px; background-color: rgb(246, 246, 246); } 
 			.main_container{ width: 900px; margin: auto; padding: 20px 0; background-color: white; min-height: 786px;}
 	</style>
 </head>
@@ -65,6 +65,8 @@ echo '</div>';
 
 ?>
 </div>
+<script src="<?php echo site_url('assets/javascript/jquery.min.js')?>"></script>
+<script src="<?php echo site_url('assets/javascript/bootstrap.bundle.js')?>"></script>
 </body>
 </html>
 	
