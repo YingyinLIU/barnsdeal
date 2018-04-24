@@ -17,6 +17,9 @@
 	<div class="container" style="padding-top: 15px;margin: 0 30px;">
 
 <?php
+
+//var_dump($users);
+
 $id_intitule = array();
 foreach($questions as $question)
 {
