@@ -70,7 +70,7 @@ class Form extends CI_Controller
 		$users = $this->Forms->get_users($form_id);	
 		$data['users'] = $users;
 		
-		$this->load->view('Answers', $data);
+		$this->load->view('answers', $data);
 	}
 	
 	public function ajouter()
