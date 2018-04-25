@@ -142,7 +142,7 @@ class Form extends CI_Controller
 		$form = $this->Forms->get_form($form_id);
 		$details = $this->Forms->get_details($form_id);
 		$data = array('form_id' => $form_id, 'form' => $form, 'details' => $details);
-		$data['nav_bar'] = $this->load->view('nav_bar');	
+		//$data['nav_bar'] = $this->load->view('nav_bar');	
 		$this->load->view('answer_form', $data);		
 	}
 	

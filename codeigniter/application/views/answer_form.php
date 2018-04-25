@@ -140,7 +140,7 @@
 	<?php $nb_slides = count($form)+1;  ?>
 	
 	<header>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="false">
         <ol class="carousel-indicators">
 		  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" id="indicator_0"></li>		  
 		 
@@ -159,7 +159,7 @@
 		
 		<?php echo '<form action="'.base_url().'form/repondre_question" method="post">'; ?>
 			         
-          <div class="carousel-item active" style="background-color: #343a40" id="carousel_0">
+          <div class="carousel-item active" style="background-color: #343a40" id="carousel_start">
             <div class="answer_desr">
               <h3><?php echo $form_id; ?></h3>
               <p><?php echo $details['details']; ?></p>
@@ -174,7 +174,7 @@
 			echo '</div></div>'; 
 		  } ?>
 		  		  
-		 <div class="carousel-item" style="background-color: #343a40" id="carousel_<?php echo $nb_slides; ?>">
+		 <div class="carousel-item" style="background-color: #343a40" id="carousel_end">
             <div class="answer_desr"> <h3>Last slide</h3> <p>Thank you for answering this form.</p> 
 			<?php echo '<input type="hidden" name="form_id" value="'.$form_id.'">
 			<input type="submit" value="Confirmer"/></form>'; ?> 
@@ -202,26 +202,49 @@
 <script type="text/javascript">
 	
 
-	$(".carousel-control-next").click(function(){
-		if($("#carousel_0").attr("class") == "carousel-item active")
+	$(".carousel-control-next").bind("click",function(){
+		let item_length = $(".carousel-item").length;
+		if($("#carousel_start").attr("class") == "carousel-item active")
 			$("#tag-prev").show();
-		if($("#carousel_".concat(($(".carousel-item").length-2).toString())).attr("class") == "carousel-item active")
+		if($("#carousel_".concat((item_length-2).toString())).attr("class") == "carousel-item active")
 			$("#tag-next").hide();
 	});
 
-	$(".carousel-control-prev").click(function(){
+	$(document).bind("keydown",(e) => {
+		switch(e.which){
+			case 13:
+			case 39:
+				next_page();
+				break;
+			case 37:
+				prev_page();
+				break;
+			default:
+				break;
+		}
+	});
+
+	$("input").bind("keydown", (e) => {
+		if(e.which == 13){
+			event.preventDefault();
+			next_page();
+		}
+	});
+
+	$(".carousel-control-prev").bind("click",function(){
 		if($("#carousel_1").attr("class") == "carousel-item active")
 			$("#tag-prev").hide();
-		if($("#carousel_".concat(($(".carousel-item").length-1).toString())).attr("class") == "carousel-item active")
+		if($("#carousel_end").attr("class") == "carousel-item active")
 			$("#tag-next").show();
 	});
 
-	$(".carousel-indicators>li").click(function(){
+	$(".carousel-indicators>li").bind("click",function(){
+		let item_length = $(".carousel-item").length;
 		if($(this).attr("id") == "indicator_0"){
 			$("#tag-prev").hide();
 			$("#tag-next").show();
 		}
-		else if($(this).attr("id") == "indicator_".concat(($(".carousel-item").length-1).toString())){
+		else if($(this).attr("id") == "indicator_".concat((item_length-1).toString())){
 			$("#tag-prev").show();
 			$("#tag-next").hide();
 		}
@@ -230,6 +253,16 @@
 			$("#tag-next").show();
 		}
 	});
+
+	function next_page(){
+		if($("#carousel_end").attr("class") != "carousel-item active")
+			$(".carousel-control-next").click();
+	}
+
+	function prev_page(){
+		if($("#carousel_start").attr("class") != "carousel-item active")
+			$(".carousel-control-prev").click();
+	}
 
 </script>
 </body>

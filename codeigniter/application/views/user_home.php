@@ -16,7 +16,8 @@
 <body>
 <?php $this->load->view('nav_bar'); ?>	
 <div class="main_container">
-<h3 style="text-align: center; color:#343a40; font-size:2rem;">Vos questionnaires</h3>
+<h3 style="text-align: center; color: #343a40; font-size:2rem;">Vos questionnaires</h3>
+<p style="text-align: center; color: #acacad;">( <span style="color: #ba8f77;">Le rouge formulaire</span> => vous avez rempli )</p>
 
 <?php 
 
@@ -36,8 +37,8 @@ for ($i = 0; $i < count($forms_id); $i++)
 	
 	echo '<div class="col-md-3" style="padding-bottom: 15px; padding-top: 15px;">';
 	
-	if(in_array($form_id, $filled_forms)){ echo '<div class="card my_form" style="background-color:  #ba8f77; padding:10px 0;">'; }
-	else { echo '<div class="card my_form" style="background-color: #6c6f66; padding:10px 0;">'; }
+	if(in_array($form_id, $filled_forms)){ echo '<div class="card my_form" style="background-color: #ba8f77; padding:10px 0;">'; }
+	else { echo '<div class="card my_form" style="background-color: #7f9654; padding:10px 0;">'; }
 		
 	echo '<div class="form_name">';
 	echo $form_name; 
