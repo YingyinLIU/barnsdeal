@@ -186,13 +186,17 @@ class Questions extends CI_Model
 			
 			else if($data[$id]['type_question'] == 'choix_simple')
 			{
-				$tmp = $answer_data[$id.'_'];
-				$data[$id][$id.'_'.$tmp] = 1;
+				if(isset($answer_data[$id.'_'])){
+					$tmp = $answer_data[$id.'_'];
+					$data[$id][$id.'_'.$tmp] = 1;
+				}
 			}
 			
 			else if(($data[$id]['type_question'] == 'champ_texte') || ($data[$id]['type_question'] == 'champ_numerique') || ($data[$id]['type_question'] == 'echelle'))
 			{
-				$data[$id][$id.'_'] = $answer_data[$id.'_'];
+				if(isset($answer_data[$id.'_'])){
+					$data[$id][$id.'_'] = $answer_data[$id.'_'];
+				}
 			}
 		}
 			
