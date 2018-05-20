@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Barnsdeal</title>
+    <title>BARNSDEAL</title>
     <link href="<?php echo site_url('assets/css/bootstrap.css')?>" rel="stylesheet">		
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="<?php echo site_url('assets/javascript/my_jquery.js')?>"></script>
@@ -41,7 +41,7 @@ echo form_close();
 		
 			<div>
 				<label>Quel est l'intitulé de votre question ?</label></br>	
-				<input type="text" name="intitule" placeholder="">
+				<input type="text" name="intitule" style="width: 450px;" placeholder="">
 			</div>
 			
 			</br>

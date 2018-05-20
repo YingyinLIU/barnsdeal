@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Barnsdeal</title>
+    <title>BARNSDEAL</title>
     <link href="<?php echo site_url('assets/css/bootstrap.css'); ?>" rel="oldest stylesheet">
 	<link href="<?php echo site_url('assets/css/login.css'); ?>" rel="oldest stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script type="text/javascript"></script>
 </head>
 <body>
-<h1>Barnsdeal</h1>
+<h1>BARNSDEAL</h1>
 <div class="login_content">
 <div class="login_form">
 <?php 
@@ -32,12 +32,7 @@ echo form_close();
 
 ?>
 
-</div>
-<div class="login_desc">
-<p>Compte administrateur : 1 / password1</p>
-<p>Compte utilisateur : 2 / password2</p>
-</div>
-</div>
+</div></div>
 
 </body>
 </html>
