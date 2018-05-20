@@ -55,17 +55,21 @@
 				$array_choix = ['choix1','choix2','choix3','choix4','choix5','choix6','choix7','choix8','choix9','choix10'];
 				
 				$i = 0;
+				echo '<div class="options">';
 				foreach($array_choix as $element)
 				{
 					if ($question[$element] != "") // To-Do : Afficher les résultats sur plusieurs lignes
 					{
+						echo '<div class="each_option">';
 						$data_checkbox = array('name' => $question['id'].'_'.$i, 'value' => 1, 'id'=>$question['id'].'_'.$i);
 						echo form_checkbox($data_checkbox);
 						$attributes = array('class' => 'label_checkbox');
 						echo form_label($question[$element], $question['id'].'_'.$i, $attributes);
 						$i = $i+1;
+						echo '</div>';
 					}
 				}
+				echo '</div>';
 				
 				$data = array('type_question_'.$question['id'] => 'choix_multiple');
 				echo form_hidden($data);
@@ -80,17 +84,21 @@
 				$array_choix = ['choix1','choix2','choix3','choix4','choix5','choix6','choix7','choix8','choix9','choix10'];
 				
 				$i = 0;
+				echo '<div class="options">';
 				foreach($array_choix as $element)
 				{
 					if ($question[$element] != "")
 					{	
+						echo '<div class="each_option">';
 						$data_radio = array('name' => $question['id'].'_', 'value' => $i, 'id' => $question['id'].'_'.$i);
 						echo form_radio($data_radio);
 						$attributes = array('class' => 'label_checkbox');
 						echo form_label($question[$element], $question['id'].'_'.$i, $attributes);
+						echo '</div>';
 						$i = $i+1;
 					}
 				}
+				echo '</div>';
 				
 				$data = array('type_question_'.$question['id'] => 'choix_simple');
 				echo form_hidden($data);	
