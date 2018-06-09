@@ -174,7 +174,7 @@ class Forms extends CI_Model
 	}
 	
 	public function exportCSV($formname, $questions, $answerList, $form_id){
-		$value_export = "Form ID: ;".$form_id.";Form Name: ;".$formname[0]['intitule'].";\n ".'userID,';
+		$value_export = "Form ID: ;".$form_id.";Form Name: ;".$formname[0]['intitule'].";\n ".'userID;';
 
 		foreach($questions as $value){
 			$questionName = $value['position'].'. '.$value['intitule'].';';
