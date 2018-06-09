@@ -15,8 +15,20 @@
 	<?php $this->load->view('nav_bar'); ?>
 	<div class="main_container">	
 	<div class="container" style="padding-top: 15px;margin: 0 30px;">
-
 <?php
+date_default_timezone_set("Europe/Paris");
+
+function console_log($data)  
+	{  
+	    if (is_array($data) || is_object($data))  
+	    {  
+	        echo("<script>console.log('".json_encode($data)."');</script>");  
+	    }  
+	    else  
+	    {  
+	        echo("<script>console.log('".$data."');</script>");  
+	    }  
+	} 
 
 //var_dump($users);
 
@@ -27,7 +39,6 @@ foreach($questions as $question)
 	$intitule = $question['intitule'];
 	$id_intitule[$id] = $intitule;
 }
-
 
 $new_answers = array();
 
@@ -125,7 +136,6 @@ foreach($users as $user)
 echo '</table>';
 echo '</div>';
 
-
 $questions_id = array();
 array_push($questions_id, null);
 foreach($questions as $question)
@@ -133,14 +143,14 @@ foreach($questions as $question)
 	array_push($questions_id, $question['id']);
 }
 
-
 $data = array('form_id' => $form_id, 'questions_id' => $questions_id, 'users' => $users);
 echo form_hidden($data);
-
 echo form_submit('submit', 'Confirmer');
-
 echo form_close();
 
+echo form_open('Form/downloadCSV/'.$form_id);
+echo form_submit('export-csv', 'exporter à CSV');
+echo form_close();
 
 ?>
 </div>

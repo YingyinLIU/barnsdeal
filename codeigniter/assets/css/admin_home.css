@@ -55,6 +55,13 @@ input[name='submit']{
     width: 100px; 
 }
 
+input[name='export-csv']{
+    background-color: #d5baac;
+    color: white;
+    padding: 5px 10px;
+    margin-left: -4px;
+}
+
 input[value='Valider']{
     background-color: #343a40d1;
     color: white;

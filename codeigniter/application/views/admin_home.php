@@ -45,7 +45,8 @@
 echo '<div class="row">';
 
 $position = 0;
-
+// forms_id => id array of all the forms
+// forms =>  name array of all thr forms
 $forms_id = array_keys($forms);
 
 for ($i = 0; $i < count($forms_id); $i++)

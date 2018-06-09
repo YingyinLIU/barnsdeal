@@ -43,6 +43,12 @@ class Forms extends CI_Model
 			
 		return $forms_name;
 	}
+
+	public function get_formname_byid($form_id)
+	{
+		$query = $this->db->query("SELECT intitule FROM forms WHERE id = ".$form_id);
+		return $query->result_array();
+	}
 	
 	public function get_filled_forms($forms)
 	{
@@ -159,7 +165,7 @@ class Forms extends CI_Model
 						$query = $this->db->query('SELECT choix'.$choix.' FROM q_'.$form_id.' WHERE id = '.$question_selected);
 						$answer_text = $query->result_array();
 						if ($list_options == ''){ $list_options = $list_options.''.$answer_text[0]['choix'.$choix]; }
-						else { $list_options = $list_options.' | '.$answer_text[0]['choix'.$choix]; }
+						else { $list_options = $list_options.'; '.$answer_text[0]['choix'.$choix]; }
 					}
 				}
 			}
@@ -167,6 +173,27 @@ class Forms extends CI_Model
 		}
 	}
 	
+	public function exportCSV($formname, $questions, $answerList, $form_id){
+		$value_export = "Form ID:,".$form_id.",Form Name:,".$formname[0]['intitule'].",\n ".'userID,';
+
+		foreach($questions as $value){
+			$questionName = $value['position'].'. '.$value['intitule'].',';
+			$value_export = $value_export.$questionName;
+		}
+		$value_export = $value_export.",\n ";
+
+		foreach($answerList as $valueResponse){
+			$answerPrint = $valueResponse['id'].',';
+			foreach($questions as $valueQues){
+				$qat = $this->Forms->get_user_answer($form_id,$valueQues['id'],$valueResponse['id'],$valueQues['type']);
+				$answerPrint = $answerPrint.$qat.',';
+			}
+			$value_export = $value_export.$answerPrint.",\n ";
+		}
+
+		return $value_export;
+	}
+
 	public function add_form($form_name, $form_details)
 	{
 		// On récupère l'id max

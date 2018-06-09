@@ -41,6 +41,19 @@ class Form extends CI_Controller
 			$this->load->view('user_home', $data);
 		}
 	}
+
+	public function downloadCSV($form_id){
+		$formname = $this->Forms->get_formname_byid($form_id);
+		$answerList = $this->Forms->get_answers($form_id);
+		$questions = $this->Forms->get_form($form_id);
+		$users = $this->Forms->get_users($form_id);	
+		$value_export = $this->Forms->exportCSV($formname, $questions, $answerList, $form_id);	
+		
+		$this->load->helper('download');
+		$value_export = 'Print Time,'.date('H:i:s d/m/Y').",\n ".$value_export;
+		$name = $form_id.'_'.$formname[0]['intitule'].'_'.date('dmY').'.csv';
+		force_download($name, $value_export, TRUE);
+	}
 			
 	public function reponses($form_id)
 	{
@@ -50,33 +63,23 @@ class Form extends CI_Controller
 		$dropdown_values = $this->session->flashdata('dropdown_values');	
 		$data['answers'] = $answers;
 		$data['dropdown_values'] = $dropdown_values; 					
-		//$data['nav_bar'] = $this->load->view('nav_bar');	
-// =======
-// 		if($this->session->flashdata('answers') == NULL)
-// 		{ 
-// 			$form_id = $this->input->post('form_id'); 
-// 		}
-		
-// 		else 
-// 		{ 
-// 			$answers = $this->session->flashdata('answers');
-// 			$dropdown_values = $this->session->flashdata('dropdown_values');
-// 			$form_id = $answers['form_id']; 
-// 			$data['answers'] = $answers;
-// 			$data['dropdown_values'] = $dropdown_values; 
-// 		}
-						
-// 		//$data['nav_bar'] = $this->load->view('nav_bar');
-		
-// >>>>>>> Stashed changes
 		$data['form_id'] = $form_id;
+
+		$formname = $this->Forms->get_formname_byid($form_id);
+		$data['formname'] = $formname;
 		
+		$answerList = $this->Forms->get_answers($form_id);
+		$data['answerList'] = $answerList;
+
 		$questions = $this->Forms->get_form($form_id);
 		$data['questions'] = $questions;
 		
 		$users = $this->Forms->get_users($form_id);	
 		$data['users'] = $users;
-		
+
+		$value_export = $this->Forms->exportCSV($formname, $questions, $answerList, $form_id);	
+		$data['value_export'] = $value_export;
+
 		$this->load->view('answers', $data);
 	}
 	
