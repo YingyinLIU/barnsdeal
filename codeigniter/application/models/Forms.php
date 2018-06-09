@@ -165,7 +165,7 @@ class Forms extends CI_Model
 						$query = $this->db->query('SELECT choix'.$choix.' FROM q_'.$form_id.' WHERE id = '.$question_selected);
 						$answer_text = $query->result_array();
 						if ($list_options == ''){ $list_options = $list_options.''.$answer_text[0]['choix'.$choix]; }
-						else { $list_options = $list_options.'; '.$answer_text[0]['choix'.$choix]; }
+						else { $list_options = $list_options.' | '.$answer_text[0]['choix'.$choix]; }
 					}
 				}
 			}
@@ -174,21 +174,21 @@ class Forms extends CI_Model
 	}
 	
 	public function exportCSV($formname, $questions, $answerList, $form_id){
-		$value_export = "Form ID:,".$form_id.",Form Name:,".$formname[0]['intitule'].",\n ".'userID,';
+		$value_export = "Form ID: ;".$form_id.";Form Name: ;".$formname[0]['intitule'].";\n ".'userID,';
 
 		foreach($questions as $value){
-			$questionName = $value['position'].'. '.$value['intitule'].',';
+			$questionName = $value['position'].'. '.$value['intitule'].';';
 			$value_export = $value_export.$questionName;
 		}
-		$value_export = $value_export.",\n ";
+		$value_export = $value_export.";\n ";
 
 		foreach($answerList as $valueResponse){
-			$answerPrint = $valueResponse['id'].',';
+			$answerPrint = $valueResponse['id'].';';
 			foreach($questions as $valueQues){
 				$qat = $this->Forms->get_user_answer($form_id,$valueQues['id'],$valueResponse['id'],$valueQues['type']);
-				$answerPrint = $answerPrint.$qat.',';
+				$answerPrint = $answerPrint.$qat.';';
 			}
-			$value_export = $value_export.$answerPrint.",\n ";
+			$value_export = $value_export.$answerPrint.";\n ";
 		}
 
 		return $value_export;

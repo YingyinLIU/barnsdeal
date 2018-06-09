@@ -50,7 +50,7 @@ class Form extends CI_Controller
 		$value_export = $this->Forms->exportCSV($formname, $questions, $answerList, $form_id);	
 		
 		$this->load->helper('download');
-		$value_export = 'Print Time,'.date('H:i:s d/m/Y').",\n ".$value_export;
+		$value_export = 'Print Time: ;'.date('H:i:s d/m/Y').";\n ".$value_export;
 		$name = $form_id.'_'.$formname[0]['intitule'].'_'.date('dmY').'.csv';
 		force_download($name, $value_export, TRUE);
 	}
