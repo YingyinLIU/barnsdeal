@@ -8,13 +8,18 @@
     <title>BARNSDEAL</title>
     <link href="<?php echo site_url('assets/css/bootstrap.css')?>" rel="stylesheet">
     <link href="<?php echo site_url('assets/css/admin_home.css')?>" rel="stylesheet">
-	<style> body { padding-top: 62px; background-color: rgb(246, 246, 246); } </style>
+	<style> body { padding-top: 62px; } </style>
 </head>
 
 <body>
 	<?php $this->load->view('nav_bar'); ?>
+	<div class="sider_content">
+			<?php $this->load->view('side_bar'); ?>
+		</div>
 	<div class="main_container">	
+	<div class="content_">
 	<div class="container" style="padding-top: 15px;margin: 0 30px;">
+
 <?php
 date_default_timezone_set("Europe/Paris");
 
@@ -29,8 +34,6 @@ function console_log($data)
 	        echo("<script>console.log('".$data."');</script>");  
 	    }  
 	} 
-
-//var_dump($users);
 
 $id_intitule = array();
 foreach($questions as $question)
@@ -81,25 +84,17 @@ for ($i = 1; $i < 4; $i++)
 	foreach($questions as $question)
 	{	
 		$tmp = $question['id'];
-		//array_push($options, $tmp);
 		$options[$tmp] = $question['intitule'];
 	}
 	
 	if(isset($dropdown_values[$i]))
 	{ 
-		//echo 'Bonjour';
 		$id = $dropdown_values[$i];
-		//$intitule = $id_intitule[$id];
-		//$set_option = $intitule; 
 		$set_option = $id;
 	}
 	else { $set_option = null; }
-	
-	//echo $set_option;
-	
-	//$option_selected = set_option($questions, $i, $id_intitule, $dropdown_values);
+		
 	echo form_dropdown('dropdown_'.$i, $options, $set_option);
-	//echo form_dropdown('dropdown_'.$i, $options);
 	echo '</th>';
 }
 
@@ -153,6 +148,7 @@ echo form_submit('export-csv', 'exporter à CSV');
 echo form_close();
 
 ?>
+</div>
 </div>
 </div>
 <script src="<?php echo site_url('assets/javascript/jquery.min.js')?>"></script>

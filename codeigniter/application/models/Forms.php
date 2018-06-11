@@ -227,7 +227,6 @@ class Forms extends CI_Model
 		
 		$this->db->query($sql);
 		
-		
 		// Création de la table r_ du formulaire
 		$sql = "CREATE TABLE r_".$new_id." (
 				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY
@@ -237,7 +236,7 @@ class Forms extends CI_Model
 		
 		
 		// Ajouter colomne dans la table users
-		$this->db->query('ALTER TABLE users ADD q_'.$new_id.' BOOLEAN default 1'); // To-Do : attribuer les questionnaires aux bons utilisateurs
+		$this->db->query('ALTER TABLE users ADD q_'.$new_id.' BOOLEAN default 0'); // To-Do : attribuer les questionnaires aux bons utilisateurs
 	}
 	
 	

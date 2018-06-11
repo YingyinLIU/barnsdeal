@@ -10,12 +10,17 @@
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="<?php echo site_url('assets/javascript/my_jquery.js')?>"></script>
 	<link href="<?php echo site_url('assets/css/admin_home.css'); ?>" rel="stylesheet">
-	<style> body { padding-top: 62px; background-color: rgb(246, 246, 246); } </style>
+	<style> body { padding-top: 62px; } </style>
 </head>
 
 <body>
+	<?php $this->load->view('nav_bar'); ?>
+	<div class="sider_content">
+			<?php $this->load->view('side_bar'); ?>
+		</div>
+
 <div class="main_container">
-<?php $this->load->view('nav_bar'); ?>
+<div class="content_">
 
 <h3>Modifier champ descriptif</h3>
 <div class="container" style="padding: 15px 0 ;">
@@ -121,6 +126,7 @@ echo form_close();
 	}
 
 ?>
+</div>
 </div>	
 </div>
 <script src="<?php echo site_url('assets/javascript/jquery.min.js')?>"></script>

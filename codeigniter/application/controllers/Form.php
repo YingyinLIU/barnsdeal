@@ -9,9 +9,10 @@ class Form extends CI_Controller
 		$this->load->helper('Form');
 		$this->load->model('Forms');
 		$this->load->model('Questions');
+		$this->load->model('Users');
 	}
 	
-	public function index()
+	public function index($action = NULL)
 	{
 		if($_SESSION['user_privilege'] == 'admin')
 		{ 
@@ -26,6 +27,38 @@ class Form extends CI_Controller
 			
 			$all_forms_name = $this->Forms->get_forms_name($all_forms);
 			$data = array('forms' => $all_forms_name);
+			
+			if (isset($action))
+			{ 
+				$data['main_content'] = $action; 
+				
+				if ($action == 'ajouter_utilisateur')
+				{
+					$data['startups'] = $this->Users->get_startups();
+				}
+				
+				else if ($action == 'supprimer_utilisateur')
+				{
+					$startups = $this->Users->get_startups();
+					$allusers = $this->Users->get_all_users();
+					$user_startup = array();
+					foreach ($allusers as $valueUser) {
+						$tmp = array('id' => $valueUser['id'], 
+							'password' => $valueUser['password']);
+						foreach ($startups as $valueStartup) {
+							if($valueUser['startup'] == $valueStartup['id']){
+								$tmp['startup'] = $valueStartup['nom'];
+								break;
+							}
+						}
+						array_push($user_startup, $tmp);
+					}
+					$data['startups'] = $startups;
+					$data['allusers'] = $allusers;
+					$data['user_startup'] = $user_startup;
+				}
+			}
+			else { $data['main_content'] = 'lister_questionnaires'; }
 			//$data['nav_bar'] = $this->load->view('nav_bar');
 			$this->load->view('admin_home', $data); 
 		}
@@ -40,6 +73,32 @@ class Form extends CI_Controller
 			//$data['nav_bar'] = $this->load->view('nav_bar');
 			$this->load->view('user_home', $data);
 		}
+	}
+	
+	public function ajouter_start_up()
+	{		
+		$new_start_up = $this->input->post('new_start_up');
+		$this->Users->add_start_up($new_start_up);		
+		redirect('Form');
+	}
+
+	public function ajouter_utilisateur()
+	{		
+		
+		$user_startup = $this->input->post('start_up');
+
+		$user_questionnary = $this->input->post('checkbox[]');
+
+
+		$this->Users->add_user($user_startup, $user_questionnary);		
+		redirect('Form');
+	}
+
+	public function supprimer_utilisateur()
+	{
+		$userid = $this->input->post('userid');
+		$this->Users->delete_user($userid);
+		redirect('Form/index/supprimer_utilisateur');
 	}
 
 	public function downloadCSV($form_id){
@@ -63,6 +122,7 @@ class Form extends CI_Controller
 		$dropdown_values = $this->session->flashdata('dropdown_values');	
 		$data['answers'] = $answers;
 		$data['dropdown_values'] = $dropdown_values; 					
+
 		$data['form_id'] = $form_id;
 
 		$formname = $this->Forms->get_formname_byid($form_id);

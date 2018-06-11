@@ -14,6 +14,11 @@
 
 		}
 	</script>
+	<style>
+	 .label_checkbox {
+	 	color:white;
+	 }
+</style>
 </head>
 
 <body class="form">
@@ -181,7 +186,6 @@
 			displayQuestion($question, $form_id);						
 			echo '</div></div>'; 
 		  } ?>
-		  		  
 		 <div class="carousel-item" style="background-color: #343a40" id="carousel_end">
             <div class="answer_desr"> <h3>Last slide</h3> <p>Thank you for answering this form.</p> 
 			<?php echo '<input type="hidden" name="form_id" value="'.$form_id.'">
@@ -271,7 +275,6 @@
 		if($("#carousel_start").attr("class") != "carousel-item active")
 			$(".carousel-control-prev").click();
 	}
-
 </script>
 </body>
 </html>
